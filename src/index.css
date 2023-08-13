@@ -1,5 +1,8 @@
 body {
 	background-color: darkblue;
+	margin: 0;
+	padding: 0;
+	overflow: auto;
 }
 
 .container {
@@ -10,6 +13,10 @@ body {
 	position: relative;
 	width: 100%;
 	height: 100vh; /* Adjust as needed */
+}
+
+.hide-overflow {
+	overflow: hidden;
 }
 
 .explore-button {
@@ -33,19 +40,163 @@ body {
 	top: 0;
 	right: 0;
 	height: 100vh;
-	background-color: #333;
+	background-color: rgb(72, 96, 121);
 	color: #fff;
 	padding: 20px;
 	box-sizing: border-box;
 	height: auto;
+	right: -45%;
+	transition: right 0.3s ease;
+}
+
+.sidebar.active {
+	right: 0;
 }
 
 .sidebar li {
 	list-style-type: none;
 }
 
+.list-container {
+	border-radius: 10px;
+}
+
 .list-item {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	/* max-height: 3em; */
+}
+
+.list-item:hover {
+	cursor: pointer;
+	background-color: rgb(124, 121, 121);
+}
+
+.list-item-expand {
+	cursor: pointer;
+	background-color: rgb(34, 33, 33);
+}
+
+.accordion-div {
+	display: flex;
+	/* border-style: solid; */
+}
+
+.image-container {
+	width: 50px; /* Set the desired width for the images */
+	height: 50px; /* Set the desired height for the images */
+	overflow: hidden; /* Hide any overflow if images are larger */
+	padding-right: 1em;
+}
+
+.accordion-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.modal-img {
+	width: 5em;
+	height: 5em;
+	object-fit: cover;
+}
+
+.modal-inner-content {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: space-around;
+	/* background-color: yellow; */
+}
+
+.modal-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 2em 0;
+	gap: 5px;
+}
+
+.modal-text {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5em;
+}
+
+.modal-each-text {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	/* background-color: red; */
+	padding-left: 12em;
+	text-align: left;
+}
+
+.modal-each-text * {
+	/* background-color: green; */
+	margin-bottom: 0;
+}
+
+.modal-contact {
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+}
+
+.modal-contact p {
+	min-width: 3em;
+}
+
+.modal {
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	inset: 0;
+	z-index: 10;
+	background-color: darkblue;
+	color: white;
+}
+
+.modal-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.modal-btn {
+	display: flex;
+	justify-content: center;
+	bottom: 1.25rem;
+	position: relative;
+}
+
+.modal-btn button {
+	display: inline-block;
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.modal-btn button:hover {
+	background-color: #0056b3;
+	cursor: pointer;
+}
+
+.sidebar-bg {
+	display: none;
+	position: fixed;
+	background-color: black;
+	opacity: 0.8;
+	inset: 0;
+}
+
+.sidebar-bg.active {
+	display: block;
 }
