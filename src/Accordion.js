@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import axios from "axios";
-import Modal from "./Modal";
 
 function Accordion({ items, handleModalClick, handleModalExpand }) {
 	const [expandedIndex, setExpandedIndex] = useState(-1);
@@ -28,18 +27,12 @@ function Accordion({ items, handleModalClick, handleModalExpand }) {
 		else {
 			axios.get(`https://api.apis.guru/v2/${name}.json`).then((res) => {
 				const { apis } = res.data;
-				console.log(Object.values(apis));
 				const { info, swaggerUrl } = Object.values(apis)[0];
-				// const {
-				// 	title,
-				// 	"x-logo": { url },
-				// } = Object.values(apis)[0].info;
 				const {
 					title,
 					"x-logo": { url },
 				} = info;
 				const data = { title, url };
-				console.log(data, "data");
 				setState((prevState) => {
 					return {
 						...prevState,
@@ -70,13 +63,11 @@ function Accordion({ items, handleModalClick, handleModalExpand }) {
 				key={index}
 				className="list-container"
 				style={{
-					"background-color": isExpanded
-						? "rgb(34, 33, 33)"
-						: "rgb(72, 96, 121)",
+					backgroundColor: isExpanded ? "rgb(34, 33, 33)" : "rgb(72, 96, 121)",
 					width: isExpanded ? "100%" : "",
 					padding: isExpanded ? "2%" : "",
 					transform: isExpanded ? "translateX(-2%)" : "",
-					"box-shadow": isExpanded ? "0 2px 4px rgba(0, 0, 0, 0.1)" : "",
+					boxShadow: isExpanded ? "0 2px 4px rgba(0, 0, 0, 0.1)" : "",
 				}}
 			>
 				<div
@@ -92,7 +83,7 @@ function Accordion({ items, handleModalClick, handleModalExpand }) {
 					onClick={handleExpand}
 					className="list-item-expand"
 					style={{
-						"background-color": isExpanded
+						backgroundColor: isExpanded
 							? "rgb(34, 33, 33)"
 							: "rgb(72, 96, 121)",
 					}}

@@ -17,10 +17,13 @@ function App() {
 		setModalContent(obj);
 	};
 
-	useEffect(async () => {
-		const result = await axios.get("https://api.apis.guru/v2/providers.json");
-		const { data } = result.data;
-		setNameList(data);
+	useEffect(() => {
+		const getApiData = async () => {
+			const result = await axios.get("https://api.apis.guru/v2/providers.json");
+			const { data } = result.data;
+			setNameList(data);
+		};
+		getApiData();
 	}, []);
 
 	const handleClick = () => {
@@ -30,8 +33,6 @@ function App() {
 	const onExit = () => {
 		setIsSidebarOpened(false);
 	};
-
-	console.log(isSidebarOpened, "isSidebaropened");
 
 	if (!isSidebarOpened) {
 		document.querySelector("body").classList.add("hide-overflow");
@@ -82,20 +83,10 @@ function App() {
 				) : (
 					""
 				)}
-				<button class="explore-button" onClick={handleClick}>
+				<button className="explore-button" onClick={handleClick}>
 					Explore web APIs
 				</button>
 			</div>
-			{/* {isSidebarOpened ? (
-				<Sidebar
-					nameList={nameList}
-					onExit={onExit}
-					handleModalClick={handleModalClick}
-					handleModalExpand={handleModalExpand}
-				/>
-			) : (
-				""
-			)} */}
 			<Sidebar
 				isSidebarOpened={isSidebarOpened}
 				nameList={nameList}

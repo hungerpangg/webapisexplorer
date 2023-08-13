@@ -1,4 +1,3 @@
-import ReactDOM from "react-dom";
 import { useEffect } from "react";
 
 function Modal({ children, handleModalClick }) {
@@ -12,7 +11,6 @@ function Modal({ children, handleModalClick }) {
 
 	return (
 		<div>
-			{/* <div className=""></div> */}
 			<div className="modal">
 				<div className="modal-content">{children}</div>
 				<div className="modal-btn">

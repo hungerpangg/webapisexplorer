@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { GoChevronDown, GoChevronUp } from "react-icons/go";
+import { useState } from "react";
 import Accordion from "./Accordion";
-import Modal from "./Modal";
 
 function Sidebar({
 	nameList,
@@ -11,7 +8,6 @@ function Sidebar({
 	handleModalClick,
 	handleModalExpand,
 }) {
-	// const [nameList, setNameList] = useState([]);
 	const [expandedIndex, setExpandedIndex] = useState(-1);
 
 	const handleClick = (index) => {
@@ -19,14 +15,6 @@ function Sidebar({
 		else setExpandedIndex(index);
 	};
 
-	// useEffect(
-	//     async () => {
-	// 	const result = await axios.get("https://api.apis.guru/v2/providers.json");
-	// 	const { data } = result.data;
-	// 	setNameList(data);
-	// }, []);
-
-	console.log(nameList);
 	return (
 		<div>
 			<div
@@ -34,7 +22,7 @@ function Sidebar({
 				onClick={onExit}
 				style={{
 					position: "fixed",
-					"background-color": "black",
+					backgroundColor: "black",
 					opacity: "0.8",
 					inset: "0",
 				}}
