@@ -1,7 +1,7 @@
-import Sidebar from "./Sidebar";
+import Sidebar from "./components/Sidebar";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Modal from "./Modal";
+import Modal from "./components/Modal";
 
 function App() {
 	const [isSidebarOpened, setIsSidebarOpened] = useState(false);
@@ -16,6 +16,8 @@ function App() {
 	const handleModalExpand = (obj) => {
 		setModalContent(obj);
 	};
+
+	// pull api names and cache data into nameList state once page loads
 
 	useEffect(() => {
 		const getApiData = async () => {
@@ -44,42 +46,10 @@ function App() {
 		<div>
 			<div className="container">
 				{showModal ? (
-					<Modal handleModalClick={handleModalClick}>
-						<div className="modal-inner-content">
-							<div className="modal-header">
-								<img
-									src={modalContent.info["x-logo"].url}
-									className="modal-img"
-								/>
-								<h1>{modalContent.info.title}</h1>
-							</div>
-							<div className="modal-text">
-								<div className="modal-each-text">
-									<h5>Description</h5>
-									<p>{modalContent.info.description}</p>
-								</div>
-								<div className="modal-each-text">
-									<h5>Swagger</h5>
-									<p>{modalContent.swaggerUrl}</p>
-								</div>
-								<div className="modal-each-text">
-									<h5>Contact</h5>
-									<div className="modal-contact">
-										<p>Email</p>
-										<p>{modalContent.info.contact.email}</p>
-									</div>
-									<div className="modal-contact">
-										<p>Name</p>
-										<p>{modalContent.info.contact.name}</p>
-									</div>
-									<div className="modal-contact">
-										<p>Url</p>
-										<p>{modalContent.info.contact.url}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</Modal>
+					<Modal
+						handleModalClick={handleModalClick}
+						data={modalContent}
+					></Modal>
 				) : (
 					""
 				)}
